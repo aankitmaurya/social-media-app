@@ -12,7 +12,7 @@ class Profile(models.Model):
     image = models.ImageField(blank=True, null=True, upload_to='profile_images')
     location = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = "profile"
