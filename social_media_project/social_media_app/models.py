@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 # User
 User = get_user_model()
 
+
 # Profile
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='user_obj', on_delete=models.CASCADE)
@@ -12,7 +13,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         db_table = "profile"
 
