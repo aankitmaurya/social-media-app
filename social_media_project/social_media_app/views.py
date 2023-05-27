@@ -56,7 +56,7 @@ def sign_in(request):
 @login_required(login_url='sign_in')
 def sign_out(request):
     auth.logout(request)
-    return redirect('sign_up')
+    return redirect('sign_in')
 
 
 @login_required(login_url='sign_in')
@@ -75,7 +75,10 @@ def profile_settings(request):
 def add_post(request):
     user = request.user
     caption = request.POST['caption']
-    image = request.FILES['image_upload']
+    if 'image_upload' in request.FILES:
+        image = request.FILES['image_upload']
+    else:
+        image = None
     Post.objects.create(user=user, caption=caption, image=image)
     return redirect('index')
 
